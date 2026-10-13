@@ -175,7 +175,7 @@ class TestAccountService(TestCase):
         # Tenta atualizar uma conta com um ID inexistente (ex: 0)
         response = self.client.put(f"{BASE_URL}/0", json=test_account.serialize())
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
-        
+
     def test_delete_account(self):
         """It should Delete an Account"""
         account = self._create_accounts(1)[0]
