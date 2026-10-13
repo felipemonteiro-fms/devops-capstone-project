@@ -132,7 +132,7 @@ class TestAccountService(TestCase):
     # ADD YOUR TEST CASES HERE ...
 
     def test_get_account_list(self):
-        """It should Get a list of Accounts"""        
+        """It should Get a list of Accounts"""
         self._create_accounts(5)
         response = self.client.get(BASE_URL)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -162,7 +162,7 @@ class TestAccountService(TestCase):
 
         new_account = response.get_json()
         new_account["name"] = "Nome Alterado"
- 
+
         response = self.client.put(f"{BASE_URL}/{new_account['id']}", json=new_account)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -174,8 +174,8 @@ class TestAccountService(TestCase):
         test_account = AccountFactory()
         # Tenta atualizar uma conta com um ID inexistente (ex: 0)
         response = self.client.put(f"{BASE_URL}/0", json=test_account.serialize())
-        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND) 
-
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+        
     def test_delete_account(self):
         """It should Delete an Account"""
         account = self._create_accounts(1)[0]
